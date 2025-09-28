@@ -1,5 +1,9 @@
+CONFIG   ?= release
 COMPILER  = gcc
-CFLAGS    = -g -MMD -MP -Wall -Wextra -Winit-self -Wno-missing-field-initializers
+CFLAGS   := $(CFLAGS) -MMD -MP -Wall -Wextra -Winit-self -Wno-missing-field-initializers
+ifeq ($(CONFIG),debug)
+  CFLAGS := -g $(CFLAGS)
+endif
 ifeq "$(shell getconf LONG_BIT)" "64"
   LDFLAGS =
 else
