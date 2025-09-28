@@ -48,7 +48,10 @@ void recovery_device() {
 }
 
 // Signal handler
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 void sigint_handler(int signum) {
+#pragma GCC diagnostic pop
     if (server_addr != NULL) {
         stop_server(server_addr);
     }
@@ -194,7 +197,10 @@ uint8_t server_callback(uint8_t type, uint8_t data) {
 
 int is_closed_lid = 0;
 // Lid switch event handling thread
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 void *thread_lid_switch(void *arg) {
+#pragma GCC diagnostic pop
     char path[256] = {0};
     get_event_path_by_name("Lid Switch", path, sizeof(path));
     if (path[0] == '\0') {

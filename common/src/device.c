@@ -31,7 +31,8 @@ void get_event_path_by_name(const char *name, char *path, size_t size) {
 
     for (int i = 0; i < ndevice; i++) {
         // Get the event device name
-        char filename[256] = {0};
+        // 267 = 256 buffer + 11 for "/dev/input/"
+        char filename[256+11] = {0};
         char device_name[256] = {0};
         sprintf(filename, "/dev/input/%s", entry[i]->d_name);
         int fd = open(filename, O_RDONLY);

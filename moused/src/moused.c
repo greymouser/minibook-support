@@ -44,7 +44,10 @@ void recovery_device() {
 }
 
 // Signal handler
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 void sigint_handler(int signum) {
+#pragma GCC diagnostic pop
     if (server_addr != NULL) {
         stop_server(server_addr);
     }
